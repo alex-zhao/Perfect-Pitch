@@ -1,4 +1,4 @@
-package guessthepitchapp.guessthepitch;
+package perfectpitchapp.perfectpitch;
 
 import android.app.Activity;
 import android.media.SoundPool;
@@ -20,24 +20,25 @@ import android.widget.Toast;
 
 import java.util.Random;
 
-public class TransitionActivity extends Activity {
+public class InstructionsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_transition);
-        TextView actualText = (TextView) findViewById(R.id.actual_value);
-        actualText.setText("Actual Value: " + GameActivity.randPitch);
-        TextView yourGuessText = (TextView) findViewById(R.id.guessed_value);
-        yourGuessText.setText("Your Value: " + GameActivity.yourGuess);
-        TextView deltaText = (TextView) findViewById(R.id.delta_value);
-        deltaText.setText("You were off by: " + GameActivity.delta);
-        //GameActivity.score -= (GameActivity.delta / 4.0);
+        setContentView(R.layout.activity_instructions);
     }
 
-    public void continueGame(View view) {
-        Intent intent = new Intent(this, Round2Activity.class);
-        this.startActivity(intent);
+    public void goBack(View view) {
+        finish();
+    }
+
+    public void referencePitch(View view) {
+        Handler h = new Handler();
+        h.postDelayed(new Runnable() {
+            public void run() {
+                AudioHandler.playTone(440);
+            }
+        }, 500);
     }
 
     @Override

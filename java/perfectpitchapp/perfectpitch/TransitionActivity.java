@@ -1,31 +1,50 @@
-package guessthepitchapp.guessthepitch;
+package perfectpitchapp.perfectpitch;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.media.SoundPool;
+import android.os.Handler;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.media.AudioManager;
+import android.view.MotionEvent;
 import android.view.View;
+import android.media.MediaPlayer;
+import android.content.Intent;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class Transition2Activity extends Activity {
+import java.util.Random;
+
+public class TransitionActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transition);
         TextView actualText = (TextView) findViewById(R.id.actual_value);
-        actualText.setText("Actual Value: " + Round2Activity.randPitch);
+        actualText.setText("Actual Value: " + GameActivity.randPitch);
         TextView yourGuessText = (TextView) findViewById(R.id.guessed_value);
-        yourGuessText.setText("Your Value: " + Round2Activity.yourGuess);
+        yourGuessText.setText("Your Value: " + GameActivity.guess);
         TextView deltaText = (TextView) findViewById(R.id.delta_value);
-        deltaText.setText("You were off by: " + Round2Activity.delta);
-        //GameActivity.score -= (Round2Activity.delta / 4.0);
+        deltaText.setText("You were off by: " + GameActivity.delta);
+        MainActivity.score -= (GameActivity.delta / 5.0);
     }
 
     public void continueGame(View view) {
-        Intent intent = new Intent(this, Round3Activity.class);
-        this.startActivity(intent);
+        MainActivity.round++;
+        if (MainActivity.round > 5) {
+            Intent intent = new Intent(this, GameOverActivity.class);
+            this.startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, GameActivity.class);
+            this.startActivity(intent);
+        }
+        finish();
     }
 
     @Override

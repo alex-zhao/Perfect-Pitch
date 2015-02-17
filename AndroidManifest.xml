@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="guessthepitchapp.guessthepitch" >
+    package="perfectpitchapp.perfectpitch"
+    android:versionCode="2"
+    android:versionName="1.1">
 
     <application
         android:allowBackup="true"
@@ -29,43 +31,11 @@
             android:label="Perfect Pitch" >
         </activity>
         <activity
-            android:name=".Round2Activity"
-            android:label="Perfect Pitch" >
-        </activity>
-        <activity
-            android:name=".Round3Activity"
-            android:label="Perfect Pitch" >
-        </activity>
-        <activity
-            android:name=".Round4Activity"
-            android:label="Perfect Pitch" >
-        </activity>
-        <activity
-            android:name=".Round5Activity"
-            android:label="Perfect Pitch" >
-        </activity>
-        <activity
             android:name=".GameOverActivity"
             android:label="Game Over" >
         </activity>
         <activity
             android:name=".TransitionActivity"
-            android:label="Round Over" >
-        </activity>
-        <activity
-            android:name=".Transition2Activity"
-            android:label="Round Over" >
-        </activity>
-        <activity
-            android:name=".Transition3Activity"
-            android:label="Round Over" >
-        </activity>
-        <activity
-            android:name=".Transition4Activity"
-            android:label="Round Over" >
-        </activity>
-        <activity
-            android:name=".Transition5Activity"
             android:label="Round Over" >
         </activity>
     </application>

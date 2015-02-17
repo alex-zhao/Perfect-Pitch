@@ -1,31 +1,30 @@
-package guessthepitchapp.guessthepitch;
+package perfectpitchapp.perfectpitch;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class Transition3Activity extends Activity {
+public class SettingsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_transition);
-        TextView actualText = (TextView) findViewById(R.id.actual_value);
-        actualText.setText("Actual Value: " + Round3Activity.randPitch);
-        TextView yourGuessText = (TextView) findViewById(R.id.guessed_value);
-        yourGuessText.setText("Your Value: " + Round3Activity.yourGuess);
-        TextView deltaText = (TextView) findViewById(R.id.delta_value);
-        deltaText.setText("You were off by: " + Round3Activity.delta);
-        //GameActivity.score -= (Round3Activity.delta / 4.0);
+        setContentView(R.layout.activity_settings);
     }
 
-    public void continueGame(View view) {
-        Intent intent = new Intent(this, Round4Activity.class);
-        this.startActivity(intent);
+    public void goBack(View view) { finish(); }
+
+    public void resetHighScore(View view) {
+        SharedPreferences prefs = this.getSharedPreferences("guessthepitchapp.guessthepitch", Context.MODE_PRIVATE);
+        prefs.edit().putInt("guessthepitchapp.guessthepitch.highscore", 0).apply();
+        Toast.makeText(this, "High score successfully reset!", Toast.LENGTH_LONG).show();
     }
 
     @Override

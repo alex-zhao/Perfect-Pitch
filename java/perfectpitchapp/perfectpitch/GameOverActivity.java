@@ -1,4 +1,4 @@
-package guessthepitchapp.guessthepitch;
+package perfectpitchapp.perfectpitch;
 
 import android.app.Activity;
 import android.content.Context;
@@ -29,16 +29,15 @@ public class GameOverActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameover);
         TextView highScoreText = (TextView) findViewById(R.id.highscore_text);
-        highScoreText.setText("High Score: " + GameActivity.highScore);
-        GameActivity.score -= ((GameActivity.delta + Round2Activity.delta + Round3Activity.delta + Round4Activity.delta + Round5Activity.delta) / 5.0);
-        if (Math.round(GameActivity.score) > GameActivity.highScore) {
+        highScoreText.setText("High Score: " + MainActivity.highScore);
+        if (Math.round(MainActivity.score) > MainActivity.highScore) {
             Toast.makeText(this, "New high score!", Toast.LENGTH_LONG).show();
             SharedPreferences prefs = this.getSharedPreferences("guessthepitchapp.guessthepitch", Context.MODE_PRIVATE);
-            prefs.edit().putInt("guessthepitchapp.guessthepitch.highscore", (int) Math.round(GameActivity.score)).apply();
-            highScoreText.setText("High Score: " + Math.round(GameActivity.score));
+            prefs.edit().putInt("guessthepitchapp.guessthepitch.highscore", (int) Math.round(MainActivity.score)).apply();
+            highScoreText.setText("High Score: " + Math.round(MainActivity.score));
         }
         TextView scoreText = (TextView) findViewById(R.id.score_text);
-        scoreText.setText("Final Score: " + Math.round(GameActivity.score)+ "/1000");
+        scoreText.setText("Final Score: " + Math.round(MainActivity.score)+ "/1000");
 
     }
 

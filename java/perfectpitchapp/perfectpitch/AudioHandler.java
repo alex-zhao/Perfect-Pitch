@@ -1,4 +1,4 @@
-package guessthepitchapp.guessthepitch;
+package perfectpitchapp.perfectpitch;
 
 
 import android.app.Activity;

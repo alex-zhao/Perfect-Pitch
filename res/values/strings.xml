@@ -4,6 +4,6 @@
     <string name="app_name">Perfect Pitch</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <color name="light_blue">#e67e22</color>
+    <color name="background">#e67e22</color>
 
 </resources>

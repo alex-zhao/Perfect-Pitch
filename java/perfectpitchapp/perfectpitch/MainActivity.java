@@ -1,4 +1,4 @@
-package guessthepitchapp.guessthepitch;
+package perfectpitchapp.perfectpitch;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,13 +13,26 @@ import android.content.Intent;
 
 public class MainActivity extends ActionBarActivity {
 
+    public static double score = 1000.0;
+    public static int round = 1;
+
+    public static int highScore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences prefs = this.getSharedPreferences("guessthepitchapp.guessthepitch", Context.MODE_PRIVATE);
+        highScore = prefs.getInt("guessthepitchapp.guessthepitch.highscore", -1);
     }
 
     public void startGame(View view) {
+        score = 1000.0;
+        round = 1;
+
+        //startRound();
+
         Intent intent = new Intent(this, GameActivity.class);
         this.startActivity(intent);
     }
